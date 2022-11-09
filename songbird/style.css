@@ -1,0 +1,11 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  max-width: 1440px;
+  width: 100%;
+}
+.header{
+  height: 150px;
+}
