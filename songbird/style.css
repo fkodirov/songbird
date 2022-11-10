@@ -1,11 +1,49 @@
 body{
   margin: 0;
   padding: 0;
+  font-family: 'Rosario', sans-serif;
+  font-size: 16px;
+  color: #050505;
+  min-height: 100vh;
+  background: linear-gradient(295deg, #98f9e6 38%, transparent 38%),linear-gradient(395deg, #98f9e6 16%, transparent 16%);
 }
 .container{
   max-width: 1440px;
-  width: 100%;
+  margin: 0 auto;
 }
 .header{
-  height: 150px;
+  height: 110px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo-title{
+  color: #002a25;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+a{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #050505;
+}
+
+.menu-list{
+  display: flex;
+  justify-content: end;
+  list-style: none;
+  grid-gap: 30px;
+}
+.menu-list li{
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.active{
+  background: linear-gradient(to right, #e85c27, #fc9828);
+}
+.active a{
+  color: #ffffff;
 }
