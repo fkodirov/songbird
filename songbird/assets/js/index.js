@@ -13,6 +13,8 @@ let score=5;
 let scoreAll=0;
 const success=document.querySelector('#success');
 const error=document.querySelector('#error');
+const nextlvl=document.querySelector('.next-lvl-inner');
+let questionTitle=document.querySelector('.question-title');
 function random(){
   return Math.floor(Math.random() * 6);
 }
@@ -115,6 +117,7 @@ window.onload = function() {
   }
   audio.volume=volumebar.value;
   newlvl();
+  
 }
 
 function addElement(elem,elemclass,inelem){
@@ -177,35 +180,78 @@ audio2.addEventListener("timeupdate", function(){
 
 }
 
-document.querySelector('.answers-list').addEventListener("click", function(e){
-  if (parent !== null) {
-    const index=[...e.target.closest('li').parentElement.children].indexOf(e.target)
-    show(index);
-    if(answer==index){
-      success.play();
-      e.target.children[0].style.background='#00d800';
-      scoreAll+=score;
-      document.querySelector('.score-text').innerHTML=`Score: ${scoreAll}`;
-      document.querySelector('.question-img').style.border='none';
-      document.querySelector('.question-img').children[0].src=birds[lvl][answer]['image'];
-      document.querySelector('.question-img').children[0].style.width='200px';
-      document.querySelector('.question-img').children[0].style.height='155px';
-      document.querySelector('.question-img').children[0].style.borderRadius='25px';
-      document.querySelector('.question-title').innerHTML=birds[lvl][answer]['name'];
-      score=5;
-    }
-    else {
-      if(error.paused!=true){
-        error.pause();
-        error.currentTime = 0;
-      }
-      error.play();
-      e.target.children[0].style.background='red';
-      score--;
-    }
 
-  }; 
-}, false);
 function newlvl(){
+  lvl++;
+  playback.addEventListener("click", playpause, false);
+  answer=random();
+  questionTitle.innerHTML='**********';
+  document.querySelector('.question-img').children[0].src='./assets/img/bird.png';
+  document.querySelector('.question-img').children[0].style.width='150px';
+  document.querySelector('.question-img').children[0].style.height='150px';
+  document.querySelector('.question-img').style.border='2px solid #979595c2';
+  audio.src=birds[lvl][answer]['audio'];
+  audio.onloadedmetadata= function(){
+    duractionText.innerHTML=sectotime(audio.duration);
+    timebar.step=Math.floor(100/Math.floor(audio.duration)*100)/100;
+    timebar.value=0;
+  }
+  audio.volume=volumebar.value;
+  addElement('ul','answers-list',document.querySelector('.answers-variants'));
+  for(let i=0; i<6;i++){
+    addElement('li','answers-item',document.querySelector('.answers-list'));
+    addElement('span','tracer',document.querySelectorAll('.answers-item')[i]);
+    document.querySelectorAll('.answers-item')[i].innerHTML+=birds[lvl][i]['name'];
+  }
   document.querySelector('.answers-info').innerHTML='<p style="padding: 10px; text-align: center;">Послушайте аудиодорожку.</p><p style="padding: 10px; text-align: center;">Выберите птицу из списка</p>';
+  document.querySelector('.answers-list').addEventListener("click", function(e){
+    if (parent !== null) {
+      const index=[...e.target.closest('li').parentElement.children].indexOf(e.target)
+      show(index);
+      if(answer==index){
+        success.play();
+        e.target.children[0].style.background='#00d800';
+        scoreAll+=score;
+        document.querySelector('.score-text').innerHTML=`Score: ${scoreAll}`;
+        document.querySelector('.question-img').style.border='none';
+        document.querySelector('.question-img').children[0].src=birds[lvl][answer]['image'];
+        document.querySelector('.question-img').children[0].style.width='200px';
+        document.querySelector('.question-img').children[0].style.height='155px';
+        document.querySelector('.question-img').children[0].style.borderRadius='25px';
+        questionTitle.innerHTML=birds[lvl][answer]['name'];
+        score=5;
+      }
+      else {
+        if(error.paused!=true){
+          error.pause();
+          error.currentTime = 0;
+        }
+        error.play();
+        e.target.children[0].style.background='red';
+        score--;
+      }
+  
+    }; 
+  }, false);
 }
+
+nextlvl.addEventListener("click", function(){
+  if(questionTitle.innerHTML=='**********' || questionTitle.innerHTML=='') return false;
+  else if(lvl==5 && questionTitle.innerHTML!='**********'){
+    document.querySelector('.question').style.display='none';
+    document.querySelector('.answers-variants').style.display='none';
+    document.querySelector('.answers-info').style.display='none';
+    document.querySelector('.next-lvl').style.display='none';
+    document.querySelector('.victory').style.display='flex';
+    document.querySelector('.new-game').style.display='block';
+    document.querySelector('.victory-text').innerHTML=`Вы набрали ${scoreAll} из 30!`;
+  }
+  else{
+    document.querySelector('.answers-list').remove();
+    newlvl();
+  }
+});
+
+
+
+
