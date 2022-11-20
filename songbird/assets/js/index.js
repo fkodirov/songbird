@@ -19,20 +19,19 @@ function random(){
   return Math.floor(Math.random() * 6);
 }
 function playpause(){
-  const audioany=this.parentElement.parentElement.children[0];
-  if(audioany.paused==true){
-    audioany.play();
-    this.childNodes[0].classList.remove('fa-circle-play');
-    this.childNodes[0].classList.add('fa-circle-pause');
+  if(audio.paused==true){
+    audio.play();
+    playback.childNodes[0].classList.remove('fa-circle-play');
+    playback.childNodes[0].classList.add('fa-circle-pause');
     //playback.style.backgroundImage = "url(assets/img/pause-button.png)";
     // let myInterval=setInterval(function(){
     //   bar.value=Number(bar.value)+Number(bar.step); console.log(bar.value);
     // }, 1000);
   }
   else {
-    audioany.pause();
-    this.childNodes[0].classList.remove('fa-circle-pause');
-    this.childNodes[0].classList.add('fa-circle-play');
+    audio.pause();
+    playback.childNodes[0].classList.remove('fa-circle-pause');
+    playback.childNodes[0].classList.add('fa-circle-play');
     //playback.style.backgroundImage = "url(assets/img/play-button.png)";
     // clearInterval(myInterval);
   }
@@ -140,6 +139,8 @@ addElement('div','info-top',document.querySelector('.answers-info'));
     copyaudio.querySelector('.volume-block').remove();
     copyaudio.querySelector('#audio-sound').src=birds[lvl][index]['audio'];
     document.querySelector('.info-top-right').append(copyaudio);
+    document.querySelectorAll('.playback-button')[1].children[0].classList.remove('fa-circle-pause');
+    document.querySelectorAll('.playback-button')[1].children[0].classList.add('fa-circle-play');
 addElement('div','description',document.querySelector('.answers-info'));
 document.querySelector('.description').innerHTML=birds[lvl][index]['description'];
 
@@ -149,7 +150,7 @@ let playback2=document.querySelectorAll('.playback-button')[1];
 let currentText2=document.querySelectorAll('.current-time')[1];
 let timebar2=document.querySelectorAll('.timebar')[1];
 //let volumebar2=document.querySelectorAll('.volumebar')[1];
-playback2.addEventListener("click", playpause, false);
+playback2.addEventListener("click", playpause2, false);
 audio2.onloadedmetadata= function(){
   duractionText2.innerHTML=sectotime(audio2.duration);
   timebar2.step=Math.floor(100/Math.floor(audio.duration)*100)/100;
@@ -178,6 +179,19 @@ audio2.addEventListener("timeupdate", function(){
   timebar2.classList.remove("changing"); 
   }, false); 
 
+  function playpause2(){
+    if(audio2.paused==true){
+      audio2.play();
+      playback2.childNodes[0].classList.remove('fa-circle-play');
+      playback2.childNodes[0].classList.add('fa-circle-pause');
+    }
+    else {
+      audio2.pause();
+      playback2.childNodes[0].classList.remove('fa-circle-pause');
+      playback2.childNodes[0].classList.add('fa-circle-play');
+    }
+  }
+
 }
 
 
@@ -205,10 +219,17 @@ function newlvl(){
   }
   document.querySelector('.answers-info').innerHTML='<p style="padding: 10px; text-align: center;">Послушайте аудиодорожку.</p><p style="padding: 10px; text-align: center;">Выберите птицу из списка</p>';
   document.querySelector('.answers-list').addEventListener("click", function(e){
-    if (parent !== null) {
+    if (parent !== null && e.target.children[0].style.background=='') {
       const index=[...e.target.closest('li').parentElement.children].indexOf(e.target)
       show(index);
       if(answer==index){
+        if(error.paused!=true){
+          error.pause();
+          error.currentTime = 0;
+        }
+        audio.pause();
+        playback.childNodes[0].classList.remove('fa-circle-pause');
+        playback.childNodes[0].classList.add('fa-circle-play');
         success.play();
         e.target.children[0].style.background='#00d800';
         scoreAll+=score;
@@ -252,6 +273,19 @@ nextlvl.addEventListener("click", function(){
   }
 });
 
-
+document.querySelector('.new-game-inner').addEventListener("click", function(){
+  document.querySelector('.question').style.display='block';
+  document.querySelector('.answers-variants').style.display='flex';
+  document.querySelector('.answers-info').style.display='block';
+  document.querySelector('.next-lvl').style.display='block';
+  document.querySelector('.victory').style.display='none';
+  document.querySelector('.new-game').style.display='none';
+  lvl=-1;
+  scoreAll=0;
+  document.querySelector('.score-text').innerHTML=`Score: 0`;
+  score=5;
+  document.querySelector('.answers-list').remove();
+  newlvl();
+});
 
 
