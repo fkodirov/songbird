@@ -44,6 +44,8 @@ body{
 }
 .score{
   padding: 10px 15px;
+  background: linear-gradient(to right, #e85c27, #fc9828);
+  border-radius: 10px;
 }
 .score-text{
   color: #ffffff;

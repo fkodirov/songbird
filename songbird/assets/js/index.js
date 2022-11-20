@@ -7,7 +7,7 @@ let duractionText=document.querySelector('.duraction-time');
 let timebar=document.querySelector('.timebar');
 let volumebar=document.querySelector('.volumebar');
 let volumebefore=0.7;
-let lvl=0;
+let lvl=-1;
 let answer;
 let score=5;
 let scoreAll=0;
@@ -106,6 +106,7 @@ volumebar.addEventListener("input", function(){
 
 
 window.onload = function() {
+  newlvl();
   playback.addEventListener("click", playpause, false);
   answer=random();
   audio.src=birds[lvl][answer]['audio'];
@@ -115,7 +116,6 @@ window.onload = function() {
     timebar.value=0;
   }
   audio.volume=volumebar.value;
-  newlvl();
   
 }
 
@@ -218,6 +218,8 @@ function newlvl(){
     document.querySelectorAll('.answers-item')[i].innerHTML+=birds[lvl][i]['name'];
   }
   document.querySelector('.answers-info').innerHTML='<p style="padding: 10px; text-align: center;">Послушайте аудиодорожку.</p><p style="padding: 10px; text-align: center;">Выберите птицу из списка</p>';
+  
+  
   document.querySelector('.answers-list').addEventListener("click", function(e){
     if (parent !== null && e.target.children[0].style.background=='') {
       const index=[...e.target.closest('li').parentElement.children].indexOf(e.target)
@@ -269,7 +271,10 @@ nextlvl.addEventListener("click", function(){
   }
   else{
     document.querySelector('.answers-list').remove();
+    document.querySelectorAll('.page')[lvl].classList.toggle('active');
     newlvl();
+    document.querySelectorAll('.page')[lvl].classList.toggle('active');
+    
   }
 });
 
@@ -280,12 +285,14 @@ document.querySelector('.new-game-inner').addEventListener("click", function(){
   document.querySelector('.next-lvl').style.display='block';
   document.querySelector('.victory').style.display='none';
   document.querySelector('.new-game').style.display='none';
+  document.querySelectorAll('.page')[lvl].classList.toggle('active');
   lvl=-1;
   scoreAll=0;
   document.querySelector('.score-text').innerHTML=`Score: 0`;
   score=5;
   document.querySelector('.answers-list').remove();
   newlvl();
+  document.querySelectorAll('.page')[lvl].classList.toggle('active');
 });
 
 
