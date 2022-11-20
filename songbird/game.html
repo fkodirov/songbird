@@ -42,11 +42,11 @@
           <div class="question-info">
             <h3 class="question-title">**********</h3>
             <div class="audio-player">
-              <audio id="audio-sound" src="assets/sound/XC518684-Grands corbeaux 09012020 Suzon.mp3" preload="metadata"></audio>
+              <audio id="audio-sound" src="" preload="metadata"></audio>
               <div class="audio-player-controls">
                 <div class="playback-button"><i class="fa-regular fa-circle-play"></i></div>
                 <div class="time-block">
-                  <input type="range" id="timebar" min="0" max="100" value="0" step="1">
+                  <input type="range" class="timebar" min="0" max="100" value="0" step="1">
                   <div class="time">
                     <div class="current-time">00:00</div>
                     <div class="duraction-time">00:00</div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="volume-block">
                   <div class="volume-button"><i class="fas fa-volume-up"></i></div>
-                  <input type="range" id="volumebar" min="0" max="1" value="0.7" step="0.1">
+                  <input type="range" class="volumebar" min="0" max="1" value="0.7" step="0.1">
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@
             </ul>
           </div>
           <div class="answers-info">
-            <div class="info-top">
+            <!-- <div class="info-top">
               <div class="info-img">
                 <img src="assets/img/bird.png" alt="Bird" width="200px" height="155px">
               </div>
@@ -97,7 +97,7 @@
               </div>
 
             </div>
-            <div class="description">Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.</div>
+            <div class="description">Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.</div> -->
           </div>
         </div>
       </div>
@@ -106,6 +106,8 @@
           Следующий уровень
         </div>
       </div>
+      <audio id="success" src="./assets/sound/success.mp3"></audio>
+      <audio id="error" src="./assets/sound/error.mp3"></audio>
     </div>
   </main>
   <footer class="container">
@@ -115,6 +117,6 @@
       <a href="https://rs.school/js/"><img src="assets/img/rs-school.svg" alt="RS School" height="32px"></a>
     </div>
   </footer>
-<script src="assets/js/index.js"></script> 
+<script type="module" src="assets/js/index.js"></script> 
 </body>
 </html>

@@ -76,7 +76,7 @@ a{
   height: 75vh;
 }
 .question{
-  padding: 10px 30px;
+  padding: 0 30px 5px;
 }
 .question-inner{
   display: flex;
@@ -86,11 +86,13 @@ a{
   border-radius: 15px;
   height: 200px;
   align-items: center;
+  box-shadow: 0 0 5px #00ffb6a8;
 }
 .question-info{
   width: 50vw;
+  height: 165px;
 }
-.question-img, .info-img{
+.question-img{
   width: 210px;
   height: 165px;
   border: 2px solid #979595c2;
@@ -98,6 +100,11 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.info-img img{
+  width: 200px;
+  height: 155px;
+  border-radius: 25px;
 }
 
 .audio-player-controls{
@@ -118,7 +125,7 @@ a{
   flex-direction: column;
   justify-content: center;
 }
-#timebar{
+.timebar{
   width: 100%;
 }
 .time{
@@ -144,6 +151,7 @@ a{
 .answers-inner{
   display: flex;
   grid-gap: 20px;
+  height: 320px;
 }
 .answers-variants{
   width: 50%;
@@ -151,6 +159,7 @@ a{
   border-radius: 15px;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 5px #00ffb6a8;
 }
 .answers-list{
   list-style: none;
@@ -180,6 +189,7 @@ div .answers-item:not(:last-child){
   width: 50%;
   background: white;
   border-radius: 15px;
+  box-shadow: 0 0 5px #00ffb6a8;
 }
 .info-top{
   display: flex;
@@ -204,6 +214,7 @@ div .answers-item:not(:last-child){
   background-color: white;
   border-radius: 15px;
   text-align: center;
+  box-shadow: 0 0 5px #00ffb6a8;
 }
 .footer-inner{
   display: flex;
