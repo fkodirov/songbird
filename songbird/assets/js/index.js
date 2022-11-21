@@ -204,6 +204,7 @@ function newlvl(){
   document.querySelector('.question-img').children[0].style.width='150px';
   document.querySelector('.question-img').children[0].style.height='150px';
   document.querySelector('.question-img').style.border='2px solid #979595c2';
+  nextlvl.style.backgroundColor='#d6d2d2';
   audio.src=birds[lvl][answer]['audio'];
   audio.onloadedmetadata= function(){
     duractionText.innerHTML=sectotime(audio.duration);
@@ -221,7 +222,7 @@ function newlvl(){
   
   
   document.querySelector('.answers-list').addEventListener("click", function(e){
-    if (parent !== null && e.target.children[0].style.background=='') {
+    if (parent !== null) {
       const index=[...e.target.closest('li').parentElement.children].indexOf(e.target)
       show(index);
       if(answer==index){
@@ -229,12 +230,15 @@ function newlvl(){
           error.pause();
           error.currentTime = 0;
         }
+        if(questionTitle.innerHTML=='**********'){
         audio.pause();
         playback.childNodes[0].classList.remove('fa-circle-pause');
         playback.childNodes[0].classList.add('fa-circle-play');
+        if(e.target.children[0].style.background==''){
         success.play();
-        e.target.children[0].style.background='#00d800';
         scoreAll+=score;
+        e.target.children[0].style.background='#00d800';}
+        }
         document.querySelector('.score-text').innerHTML=`Score: ${scoreAll}`;
         document.querySelector('.question-img').style.border='none';
         document.querySelector('.question-img').children[0].src=birds[lvl][answer]['image'];
@@ -242,9 +246,11 @@ function newlvl(){
         document.querySelector('.question-img').children[0].style.height='155px';
         document.querySelector('.question-img').children[0].style.borderRadius='25px';
         questionTitle.innerHTML=birds[lvl][answer]['name'];
+        nextlvl.style.backgroundColor='white';
         score=5;
       }
       else {
+        if(questionTitle.innerHTML=='**********' && e.target.children[0].style.background==''){
         if(error.paused!=true){
           error.pause();
           error.currentTime = 0;
@@ -252,7 +258,7 @@ function newlvl(){
         error.play();
         e.target.children[0].style.background='red';
         score--;
-      }
+      }}
   
     }; 
   }, false);
@@ -267,6 +273,8 @@ nextlvl.addEventListener("click", function(){
     document.querySelector('.next-lvl').style.display='none';
     document.querySelector('.victory').style.display='flex';
     document.querySelector('.new-game').style.display='block';
+    document.querySelector('.answers-inner').style.height='auto';
+    document.querySelector('.victory').style.height='50vh';
     document.querySelector('.victory-text').innerHTML=`Вы набрали ${scoreAll} из 30!`;
   }
   else{
@@ -285,6 +293,8 @@ document.querySelector('.new-game-inner').addEventListener("click", function(){
   document.querySelector('.next-lvl').style.display='block';
   document.querySelector('.victory').style.display='none';
   document.querySelector('.new-game').style.display='none';
+  document.querySelector('.answers-inner').style.height='';
+  document.querySelector('.victory').style.height='';
   document.querySelectorAll('.page')[lvl].classList.toggle('active');
   lvl=-1;
   scoreAll=0;

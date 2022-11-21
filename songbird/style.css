@@ -36,6 +36,7 @@ body{
   display: flex;
   list-style: none;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .page{
   /* background-color: #f1fefd; */
@@ -70,6 +71,8 @@ a{
 .active{
   background: linear-gradient(to right, #e85c27, #fc9828);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 .active a{
   color: #ffffff;
@@ -134,6 +137,9 @@ a{
   display: flex;
   justify-content: space-between;
 }
+.volumebar{
+  width: 100%;
+}
 .volume-block{
   display: flex;
   justify-content: center;
@@ -171,6 +177,7 @@ a{
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 .tracer{
   width: 7px;
@@ -213,10 +220,11 @@ div .answers-item:not(:last-child){
 
 .next-lvl-inner{
   padding: 5px;
-  background-color: white;
+  background-color: #d6d2d2;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 0 5px #00ffb6a8;
+  cursor: pointer;
 }
 .footer-inner{
   display: flex;
@@ -246,4 +254,100 @@ div .answers-item:not(:last-child){
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 0 5px #00ffb6a8;
+  cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+  .answers-inner {
+    height: 590px;
+  }
+  .info-top{
+    flex-flow: column;
+  }
+  .info-top-right {
+    width: 90%;
+  }
+  .main {
+    height: auto;
+  }
+}
+@media (max-width: 720px) {
+  .header{
+    height: 160px;
+  }
+  main{
+    margin-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .question-inner{
+    flex-direction: column;
+    grid-gap: 0;
+    height: 400px;
+  }
+  .question-info{
+    width: 80vw;
+  }
+  .answers-inner{
+    flex-direction: column;
+    height: 870px;
+  }
+  .answers-variants{
+    width: 100%;
+  }
+  .answers-info{
+    width: 100%;
+    height: 540px;
+  }
+  .audio-player-controls{
+    flex-wrap: wrap;
+    grid-gap: 0 20px;
+    justify-content: center;
+  }
+  .volume-block{
+    padding-left: 67%;
+  }
+  .victory{
+    height: 50vh;
+    justify-content: center;
+  }
+}
+@media (max-width: 525px) {
+  .answers-inner{
+    height: 920px;
+  }
+  .answers-info{
+    height: 600px;
+  }
+  .time-block{
+    width: 65%;
+  }
+  .volume-block{
+    padding-left: 50%;
+  }
+  .question {
+    padding: 0px 10px 5px;
+  }
+  .answers {
+    padding: 0px 10px;
+  }
+  .next-lvl {
+    padding: 10px 10px;
+  }
+  .new-game {
+    padding: 10px 10px;
+  }
+  .victory-title{
+    font-size: 40px;
+  }
+  .victory-text{
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .header{
+    height: 200px;
+  }
+}
+
