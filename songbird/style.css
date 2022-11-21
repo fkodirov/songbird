@@ -15,6 +15,20 @@ body{
   max-width: 1440px;
   margin: 0 auto;
 }
+.bg{
+  background: no-repeat url(./assets/img/bg.png);
+  background-size: 60vw;
+  height: 75vh;
+  background-position-x: right;
+  background-position-y: top;
+}
+.main-text{
+  position: absolute;
+  top: 32%;
+  font-size: 40px;
+  width: 485px;
+  left: 12%;
+}
 .header{
   height: 120px;
   width: 100%;
@@ -26,6 +40,7 @@ body{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 .logo-title{
   color: #002a25;
@@ -257,6 +272,11 @@ div .answers-item:not(:last-child){
   cursor: pointer;
 }
 
+@media (max-width: 1200px) {
+  .main-text{
+    width: 285PX;
+  }
+}
 @media (max-width: 1000px) {
   .answers-inner {
     height: 590px;
@@ -277,6 +297,9 @@ div .answers-item:not(:last-child){
   }
   main{
     margin-top: 30px;
+  }
+  .bg{
+    height: 70vh;
   }
 }
 @media (max-width: 640px) {
@@ -342,6 +365,17 @@ div .answers-item:not(:last-child){
   }
   .victory-text{
     font-size: 30px;
+  }
+  .main-text{
+    width: 180px;
+    font-size: 25px;
+  }
+  .bg{
+    height: 65vh;
+  }
+  .menu-list{
+    grid-gap: 0 15px;
+    flex-wrap: wrap;
   }
 }
 
