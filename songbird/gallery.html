@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song bird</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+    <div class="container header">
+      <div class="top-header">
+        <div class="logo">
+          <a href=""><img class="logo-img" src="assets/img/logo.png" alt="Song bird" height="70px"><span
+              class="logo-title">Songbird</span></a>
+        </div>
+        <nav class="menu">
+          <ul class="menu-list">
+            <li class="active"><a href="#">Главная</a></li>
+            <li><a href="game.html">Играть</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <div class="gallery">
+    <div class="bird-card">
+      <div class="info-top">
+        <div class="info-img"><img class="" src="https://live.staticflickr.com/65535/49221158846_b0b69a58f1.jpg"></div>
+        <div class="info-top-right">
+          <h4 class="info-title">Журавль</h4>
+          <p class="sub">Grus grus</p>
+          <div class="audio-player">
+            <audio id="audio-sound"
+              src=""
+              preload="metadata"></audio>
+            <div class="audio-player-controls">
+              <div class="playback-button"><i class="fa-regular fa-circle-play"></i></div>
+              <div class="time-block">
+                <input type="range" class="timebar" min="0" max="100" value="0" step="1.05">
+                <div class="time">
+                  <div class="current-time">00:00</div>
+                  <div class="duraction-time">00:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="description">Звуки, издаваемые журавлем, похожи на звонкое «кур-лы – кур-лы». Журавли чаще всего поют
+        дуэтом – одна птица начинает запев со слога «кур», а вторая подхватывает «лы». Если птица поёт одна, то она
+        издает только звук «кур».</div>
+    </div>
+  </div>
+  </main>
+  <footer class="container">
+    <div class="footer-inner">
+      <a href="https://github.com/fkodirov/"><img src="assets/img/github-black.svg" alt="Github" height="32px"></a>
+      <p>2022</p>
+      <a href="https://rs.school/js/"><img src="assets/img/rs-school.svg" alt="RS School" height="32px"></a>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/gallery.js"></script>
+</body>
+
+</html>

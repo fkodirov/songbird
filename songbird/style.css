@@ -271,6 +271,19 @@ div .answers-item:not(:last-child){
   box-shadow: 0 0 5px #00ffb6a8;
   cursor: pointer;
 }
+.gallery{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 15px 15px;
+  flex-wrap: wrap;
+}
+.bird-card{
+  width: 45%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 5px #00ffb6a8;
+}
 
 @media (max-width: 1200px) {
   .main-text{
