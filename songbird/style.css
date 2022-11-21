@@ -390,6 +390,9 @@ div .answers-item:not(:last-child){
     grid-gap: 0 15px;
     flex-wrap: wrap;
   }
+  .bird-card{
+    width: 90%;
+  }
 }
 
 @media (max-width: 390px) {
