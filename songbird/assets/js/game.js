@@ -125,6 +125,15 @@ window.onload = function() {
   }
   audio.volume=volumebar.value;
   
+  //localstorage save
+if(localStorage.getItem('lang')==null){
+  localStorage.setItem('lang', document.querySelector('.lang').innerHTML);
+}
+else{
+  if(document.querySelector('.lang').innerHTML!=localStorage.getItem('lang')){
+    document.querySelector('.lang').click();
+  }
+}
 }
 
 function addElement(elem,elemclass,inelem){
@@ -390,11 +399,3 @@ document.querySelector('.lang').addEventListener("click", function(e){
   }
 });
 
-//localstorage save
-if(localStorage.getItem('lang')==null){
-  localStorage.setItem('lang', document.querySelector('.lang').innerHTML);
-}
-else{
-  if(document.querySelector('.lang').innerHTML!=localStorage.getItem('lang'))
-  document.querySelector('.lang').click();
-}

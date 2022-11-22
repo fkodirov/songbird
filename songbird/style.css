@@ -284,6 +284,9 @@ div .answers-item:not(:last-child){
   border-radius: 15px;
   box-shadow: 0 0 5px #00ffb6a8;
 }
+.lang{
+  cursor: pointer;
+}
 
 @media (max-width: 1200px) {
   .main-text{
