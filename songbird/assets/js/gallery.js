@@ -1,5 +1,13 @@
 import birdsData from './birdsData.js';
-const birds=birdsData;
+import birdsDataEn from './birdsDataEn.js';
+
+let birds;
+if(document.querySelector('.lang').innerHTML=='EN'){
+  birds=birdsData;
+}
+else{
+  birds=birdsDataEn;
+}
 let count=-1;
 for(let i=0;i<birds.length;i++){
   for(let j=0;j<birds[i].length;j++){
@@ -71,19 +79,56 @@ allaudio.forEach((item,index) => {
         document.querySelectorAll('.timebar')[index].addEventListener("mouseup", function(){
           document.querySelectorAll('.timebar')[index].classList.remove("changing"); 
         }, false);
-  
-  
-  
   });
 
 
-
-
-
-
-
-
-
-
-
 });
+
+
+document.querySelector('.lang').addEventListener("click", function(e){
+  count=-1;
+  if(e.target.innerHTML=='EN'){
+    e.target.innerHTML='RU';
+    localStorage.setItem('lang', document.querySelector('.lang').innerHTML);
+    birds=birdsDataEn;
+    for(let i=0;i<birds.length;i++){
+      for(let j=0;j<birds[i].length;j++){
+        count++;
+        document.querySelectorAll('.info-title')[count].innerHTML=birds[i][j]['name'];
+        document.querySelectorAll('.sub')[count].innerHTML=birds[i][j]['species'];
+        document.querySelectorAll('.description')[count].innerHTML=birds[i][j]['description'];
+      }
+    }
+    document.querySelector('.menu-list').children[0].children[0].innerHTML='Main';
+    document.querySelector('.menu-list').children[1].children[0].innerHTML='Play';
+    document.querySelector('.menu-list').children[2].children[0].innerHTML='Gallery';
+  }
+  else{
+    e.target.innerHTML='EN';
+    localStorage.setItem('lang', document.querySelector('.lang').innerHTML);
+    birds=birdsData;
+    for(let i=0;i<birds.length;i++){
+      for(let j=0;j<birds[i].length;j++){
+        count++;
+        document.querySelectorAll('.info-title')[count].innerHTML=birds[i][j]['name'];
+        document.querySelectorAll('.sub')[count].innerHTML=birds[i][j]['species'];
+        document.querySelectorAll('.description')[count].innerHTML=birds[i][j]['description'];
+      }
+    }
+
+    document.querySelector('.menu-list').children[0].children[0].innerHTML='Главная';
+    document.querySelector('.menu-list').children[1].children[0].innerHTML='Играть';
+    document.querySelector('.menu-list').children[2].children[0].innerHTML='Галерея';
+  }
+  
+  
+});
+
+//localstorage save
+if(localStorage.getItem('lang')==null){
+  localStorage.setItem('lang', document.querySelector('.lang').innerHTML);
+}
+else{
+  if(document.querySelector('.lang').innerHTML!=localStorage.getItem('lang'))
+  document.querySelector('.lang').click();
+}
